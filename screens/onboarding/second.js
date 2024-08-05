@@ -1,6 +1,14 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {OnboardingContext} from '../../context/onboardingContext';
+import {styles} from './onboardingStyle';
 export default function Onboarding({navigation}) {
+  const {setOnboardingCompleted} = useContext(OnboardingContext);
+  const handleOnboarding = async () => {
+    setOnboardingCompleted(4);
+    navigation.navigate('Login');
+  };
+
   const imagesdata = [
     {image: require('../../assets/second/image3.png'), left: 40, top: 50},
     {image: require('../../assets/second/image2.png'), left: 180, top: 40},
@@ -50,14 +58,12 @@ export default function Onboarding({navigation}) {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.skipButton}
-          onPress={() => navigation.navigate('Login')}>
+          onPress={() => handleOnboarding()}>
           <Text style={styles.skipButtonText}>Skip</Text>
         </TouchableOpacity>
         <Text style={styles.signText}>
           Already have an account?{' '}
-          <Text
-            style={{color: '#C4C4C4'}}
-            onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.primaryText} onPress={() => handleOnboarding()}>
             Sign In
           </Text>
         </Text>
@@ -65,102 +71,3 @@ export default function Onboarding({navigation}) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-  },
-  imageDiv: {
-    height: '60%',
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonDiv: {
-    height: '40%',
-    justifyContent: 'left',
-    padding: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    padding: 10,
-  },
-  signText: {
-    fontSize: 14,
-    color: 'black',
-    padding: 10,
-    textAlign: 'center',
-  },
-  desc: {
-    fontSize: 16,
-    color: 'black',
-    fontWeight: 'medium',
-    padding: 10,
-  },
-  nextButton: {
-    backgroundColor: '#006175',
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  skipButton: {
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'black',
-    alignItems: 'center',
-  },
-  nextButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  skipButtonText: {
-    color: 'black',
-    fontWeight: 'bold',
-  },
-  circle: {
-    position: 'absolute',
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    backgroundColor: '#006175',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  small_circle: {
-    position: 'absolute',
-    width: 30,
-    height: 30,
-    borderRadius: 25,
-    backgroundColor: '#DBE9EC',
-  },
-  small_image: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
-  },
-  centerDiv: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DBE9EC',
-    borderRadius: 100,
-    width: 150,
-    height: 150,
-  },
-  center: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
-  },
-  image: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-  },
-});

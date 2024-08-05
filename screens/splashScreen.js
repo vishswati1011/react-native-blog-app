@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Image, Text, Dimensions, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import Config from 'react-native-config';
 
 const {width, height} = Dimensions.get('window');
@@ -17,6 +18,7 @@ const SplashScreen = () => {
     // Simulate loading time
     setTimeout(() => {
       setShowSplash(false);
+      AsyncStorage.removeItem('storage_key');
       navigation.navigate('Onboarding1');
     }, 3000);
   }, [navigation]);

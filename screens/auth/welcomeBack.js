@@ -1,13 +1,14 @@
 import React, {useContext} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {OnboardingContext} from '../../context/onboardingContext';
-import {styles} from './onboardingStyle';
+import {styles} from '../onboarding/onboardingStyle';
 
-export default function Onboarding({navigation}) {
+export default function WelcomeBack({route, navigation}) {
   const {setOnboardingCompleted} = useContext(OnboardingContext);
+  const {previousScreen} = route.params;
   const handleOnboarding = async () => {
-    setOnboardingCompleted(4);
-    navigation.navigate('Login');
+    setOnboardingCompleted(5);
+    navigation.navigate('Home');
   };
   const imagesdata = [
     {image: require('../../assets/first/image3.png'), left: 40, top: 50},
@@ -46,29 +47,16 @@ export default function Onboarding({navigation}) {
           />
         </View>
       </View>
-      <View style={styles.buttonDiv}>
-        <Text style={styles.title}>Connect with Friends and Family</Text>
-        <Text style={styles.desc}>
-          Connecting with Family and Friends provides a sense of belonging and
-          security.
-        </Text>
-        <TouchableOpacity
-          style={styles.nextButton}
-          onPress={() => navigation.navigate('Onboarding2')}>
-          <Text style={styles.nextButtonText}>Next</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.skipButton}
-          onPress={() => handleOnboarding()}>
-          <Text style={styles.skipButtonText}>Skip</Text>
-        </TouchableOpacity>
-        <Text style={styles.signText}>
-          Already have an account?{' '}
-          <Text style={styles.primaryText} onPress={() => handleOnboarding()}>
-            Sign In
-          </Text>
-        </Text>
-      </View>
+      {previousScreen == 'InfoSecondScreen' ? (
+        <Text style={styles.welcomeText}> Welcome</Text>
+      ) : (
+        <Text style={styles.welcomeText}> Welcome Back</Text>
+      )}
+      <TouchableOpacity
+        style={styles.nextButton}
+        onPress={() => handleOnboarding()}>
+        <Text style={styles.nextButtonText}>Continue</Text>
+      </TouchableOpacity>
     </View>
   );
 }
