@@ -64,4 +64,23 @@ export const styles = StyleSheet.create({
   gender: {
     flex: 1,
   },
+  phoneInputContainer: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    // padding: 10,
+    // marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 10,
+    height: 40,
+    backgroundColor: colors.secondary,
+  },
+  phoneInputTextContainer: {
+    backgroundColor: colors.secondary,
+    // color: 'black',
+  },
+  phoneInputTextInput: {
+    height: 40,
+    color: 'black',
+  },
 });
