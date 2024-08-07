@@ -1,8 +1,22 @@
-import React from 'react';
-import {View, Text, TextInput, TouchableOpacity, TextBase} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, TouchableOpacity, Platform} from 'react-native';
 import {globalStyles} from '../../globalStyles';
 import {styles} from './authStyle';
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 export default function InfoScreen({navigation}) {
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+  const [gender, setGender] = useState('');
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+  const showDatepicker = () => {
+    setShow(true);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -16,7 +30,23 @@ export default function InfoScreen({navigation}) {
         <View style={styles.dateGender}>
           <View style={styles.date}>
             <Text style={globalStyles.label}>Date of Birth</Text>
-            <TextInput style={globalStyles.input} />
+            <TouchableOpacity onPress={showDatepicker}>
+              <TextInput
+                style={globalStyles.input}
+                placeholder="Select date"
+                value={date.toLocaleDateString()}
+                editable={false}
+              />
+            </TouchableOpacity>
+            {show && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date}
+                mode="date"
+                display="default"
+                onChange={onChange}
+              />
+            )}
           </View>
           <View style={styles.gender}>
             <Text style={globalStyles.label}>Gender</Text>

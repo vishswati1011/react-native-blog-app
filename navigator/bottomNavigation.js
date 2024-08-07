@@ -7,10 +7,17 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import Post from '../screens/post/addPost';
 import Comment from '../screens/comment/comment';
 import {colors} from '../globalStyles';
+import {TouchableOpacity} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+const BackButton = ({navigation}) => (
+  <TouchableOpacity onPress={() => navigation.goBack()}>
+    <MaterialIcons name="arrow-back-ios" size={20} marginLeft={20} />
+  </TouchableOpacity>
+);
+
+function MyTabs({navigation}) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -26,6 +33,7 @@ function MyTabs() {
           tabBarIcon: ({color, size}) => (
             <Icons name="home" color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -47,6 +55,13 @@ function MyTabs() {
           tabBarIcon: ({color, size}) => (
             <Icons name="plus-circle" color={color} size={size} />
           ),
+          headerLeft: () => <BackButton navigation={navigation} />,
+          headerTitle: 'Post',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+          headerTintColor: colors.black,
         }}
       />
       <Tab.Screen
@@ -67,6 +82,13 @@ function MyTabs() {
           tabBarIcon: ({color, size}) => (
             <Icons name="user" color={color} size={size} />
           ),
+          headerLeft: () => <BackButton navigation={navigation} />,
+          headerTitle: 'Profile',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+          headerTintColor: colors.black,
         }}
       />
     </Tab.Navigator>

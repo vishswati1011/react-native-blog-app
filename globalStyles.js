@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export const colors = {
   primary: '#006175',
-  secondary: '#e5e5e5',
+  secondary: '#F2F2F2',
   black: '#000000',
   white: '#ffffff',
   gray: '#808080',
@@ -30,15 +30,16 @@ export const globalStyles = StyleSheet.create({
   buttonStyle: {
     backgroundColor: '#006175',
     padding: 10,
-    margin: 10,
     borderRadius: 5,
     alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 10,
     marginLeft: 10,
     width: '100%',
   },
   input: {
-    borderColor: 'gray',
-    borderWidth: 1,
+    // borderColor: 'gray',
+    // borderWidth: 1,
     borderRadius: 5,
     padding: 10,
     marginTop: 5,

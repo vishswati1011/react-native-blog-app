@@ -9,7 +9,8 @@ import './ignoreWarnings';
 import BottomTabBar from './navigator/bottomNavigation';
 import OnboardingNavigation from './navigator/onboardingNavigation';
 import AuthNavigation from './navigator/authNavigation';
-
+import withScrollView from './withScrollView';
+import {StatusBar} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 function AppNavigator() {
@@ -21,19 +22,19 @@ function AppNavigator() {
         {currentStep > 4 ? (
           <Stack.Screen
             name="BottomTabBar"
-            component={BottomTabBar}
+            component={withScrollView(BottomTabBar)}
             options={{headerShown: false}}
           />
         ) : currentStep > 3 && currentStep < 5 ? (
           <Stack.Screen
             name="AuthNavigation"
-            component={AuthNavigation}
+            component={withScrollView(AuthNavigation)}
             options={{headerShown: false}}
           />
         ) : (
           <Stack.Screen
             name="OnboardingNavigation"
-            component={OnboardingNavigation}
+            component={withScrollView(OnboardingNavigation)}
             options={{headerShown: false}}
           />
         )}
@@ -45,6 +46,10 @@ function AppNavigator() {
 function App() {
   return (
     <OnboardingProvider>
+      <StatusBar
+        barStyle="dark-content" // Change to "light-content" for light text
+        backgroundColor="#ffffff" // Change to your desired background color
+      />
       <AppNavigator />
     </OnboardingProvider>
   );

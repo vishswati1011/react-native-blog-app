@@ -5,8 +5,8 @@ export const blogdata = [
     username: 'John Doe',
     date: '2021-09-01',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image:
-      'https://images.unsplash.com/photo-1630098931789-7c1d7b0b1e8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    image: require('../assets/users/image1.jpeg'),
+    postImage: require('../assets/blog/image1.png'),
     likecount: 10,
     commentcount: 5,
     comment: [
@@ -28,8 +28,8 @@ export const blogdata = [
     username: 'Jane Doe',
     date: '2021-09-02',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image:
-      'https://images.unsplash.com/photo-1630098931789-7c1d7b0b1e8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    image: require('../assets/users/image3.jpeg'),
+    postImage: require('../assets/blog/image3.png'),
     likecount: 15,
     commentcount: 7,
     comment: [
@@ -51,8 +51,8 @@ export const blogdata = [
     username: 'Mike Moledo',
     date: '2021-09-03',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image:
-      'https://images.unsplash.com/photo-1630098931789-7c1d7b0b1e8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    image: require('../assets/users/image2.jpeg'),
+    postImage: require('../assets/blog/image2.jpg'),
     likecount: 20,
     commentcount: 10,
     comment: [
@@ -64,6 +64,29 @@ export const blogdata = [
       {
         id: 2,
         username: 'Mike Moledo',
+        comment: 'Thanks!',
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Save earth's environment",
+    username: 'Messay Ronald',
+    date: '2021-09-04',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    image: require('../assets/users/image4.jpeg'),
+    postImage: require('../assets/blog/image4.jpeg'),
+    likecount: 25,
+    commentcount: 15,
+    comment: [
+      {
+        id: 1,
+        username: 'John Doe',
+        comment: 'Great article!',
+      },
+      {
+        id: 2,
+        username: 'Messay Ronald',
         comment: 'Thanks!',
       },
     ],

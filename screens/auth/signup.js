@@ -11,12 +11,9 @@ export default function Signup({navigation}) {
   const [valid, setValid] = useState(true);
 
   const handleSubmit = () => {
-    console.log('value', value);
-    console.log('formattedValue', formattedValue);
-
     const checkValid = phoneInput.current?.isValidNumber(value);
     setValid(checkValid ? checkValid : false);
-    console.log('checkValid', checkValid);
+    console.log(checkValid, 'checkValid');
     if (checkValid) {
       navigation.navigate('OtpScreen', {
         previousScreen: 'Signup',
@@ -30,7 +27,7 @@ export default function Signup({navigation}) {
         <Text style={globalStyles.subtitle}>
           <PhoneInput
             ref={phoneInput}
-            // defaultValue={value}
+            defaultValue={value}
             defaultCode="IN"
             layout="first"
             onChangeText={text => {
@@ -53,7 +50,6 @@ export default function Signup({navigation}) {
             textInputStyle={styles.phoneInputTextInput}
           />
         </Text>
-        <TextInput style={globalStyles.input} />
         {!valid && (
           <Text style={{padding: 10, color: 'red'}}>Invalid number</Text>
         )}

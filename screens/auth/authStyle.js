@@ -6,9 +6,11 @@ export const styles = StyleSheet.create({
     padding: 10,
     display: 'flex',
     flex: 1,
+    backgroundColor: colors.white,
   },
   topContainer: {
     flex: 1,
+    padding: 10,
   },
   link: {
     color: colors.primary,
@@ -24,7 +26,7 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   buttonText: {
-    color: colors.white,
+    color: colors.secondary,
   },
   text: {
     color: colors.primary,

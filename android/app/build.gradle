@@ -74,6 +74,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
+    tasks.whenTaskAdded { task ->
+        if (task.name == 'generateDebugLintReportModel' || task.name == 'lintAnalyzeDebug') {
+            task.dependsOn 'copyReactNativeVectorIconFonts'
+        }
+    }
+
     namespace "com.blog_app"
     defaultConfig {
         applicationId "com.blog_app"
