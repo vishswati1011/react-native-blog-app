@@ -4,8 +4,7 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../globalStyles';
 import Post from '../post/post';
-
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -13,7 +12,9 @@ export default function HomeScreen() {
           <Icons name="search" size={20} color={colors.primary} />
           <TextInput style={styles.searchInput} placeholder="Search" />
         </View>
-        <TouchableOpacity style={styles.searchButton}>
+        <TouchableOpacity
+          style={styles.searchButton}
+          onPress={() => navigation.navigate('Notification')}>
           <Ionicons
             name="notifications-outline"
             size={20}

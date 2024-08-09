@@ -20,11 +20,13 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
         {currentStep > 4 ? (
-          <Stack.Screen
-            name="BottomTabBar"
-            component={withScrollView(BottomTabBar)}
-            options={{headerShown: false}}
-          />
+          <>
+            <Stack.Screen
+              name="BottomTabBar"
+              component={BottomTabBar}
+              options={{headerShown: false}}
+            />
+          </>
         ) : currentStep > 3 && currentStep < 5 ? (
           <Stack.Screen
             name="AuthNavigation"

@@ -6,7 +6,7 @@ const initialState = {
 const OnboardingContext = createContext(initialState);
 
 const OnboardingProvider = ({children}) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(5);
 
   const setOnboardingCompleted = async value => {
     setCurrentStep(value);

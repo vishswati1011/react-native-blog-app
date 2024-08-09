@@ -2,7 +2,9 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {colors} from '../../globalStyles';
 import Icons from 'react-native-vector-icons/FontAwesome';
+import {useNavigation} from '@react-navigation/native';
 export default function Card({item}) {
+  const navigation = useNavigation();
   console.log(item.postImage, 'item');
   return (
     <View style={styles.card}>
@@ -35,7 +37,13 @@ export default function Card({item}) {
           <Text>{item?.likecount}</Text>
           <Icons name="heart-o" size={20} color={colors.primary} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate('Comment', {
+              blog: item,
+            })
+          }>
           <Text>{item?.commentcount}</Text>
           <Icons name="comment" size={20} color={colors.primary} />
         </TouchableOpacity>

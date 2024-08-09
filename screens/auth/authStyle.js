@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
   },
   signup_link: {
     textAlign: 'center',
+    color: colors.black,
   },
   bottomContainer: {
     alignItems: 'center',
@@ -34,6 +35,7 @@ export const styles = StyleSheet.create({
   resendLink: {
     marginTop: 10,
     padding: 10,
+    color: colors.gray,
   },
   resendText: {
     color: colors.red,
@@ -49,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     width: '20%',
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 5,
     padding: 10,
     backgroundColor: colors.primary,

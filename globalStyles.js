@@ -7,6 +7,7 @@ export const colors = {
   white: '#ffffff',
   gray: '#808080',
   red: '#ff0000',
+  green: '#80B1BA',
 };
 
 export const globalStyles = StyleSheet.create({
@@ -26,6 +27,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     paddingLeft: 10,
+    color: colors.gray,
   },
   buttonStyle: {
     backgroundColor: '#006175',

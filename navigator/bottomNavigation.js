@@ -1,6 +1,5 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/home/home';
 import ProfileScreen from '../screens/profile/profile';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -8,7 +7,8 @@ import Post from '../screens/post/addPost';
 import Comment from '../screens/comment/comment';
 import {colors} from '../globalStyles';
 import {TouchableOpacity} from 'react-native';
-
+import {HomeStack, LoungeStack} from './allScreenNavigation';
+import {CommonActions} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 
 const BackButton = ({navigation}) => (
@@ -27,7 +27,7 @@ function MyTabs({navigation}) {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
@@ -35,17 +35,43 @@ function MyTabs({navigation}) {
           ),
           headerShown: false,
         }}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            // Prevent default action
+            e.preventDefault();
+            // Reset the navigation state to ensure Home is the default screen
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: 'Home'}],
+              }),
+            );
+          },
+        })}
       />
       <Tab.Screen
-        name="Status"
-        component={ProfileScreen}
+        name="Lounge"
+        component={LoungeStack}
         options={{
-          tabBarLabel: 'status',
+          tabBarLabel: 'Lounge',
           tabBarIcon: ({color, size}) => (
-            <MaterialIcons name="tips-and-updates" color={color} size={size} />
+            <Icons name="pie-chart" color={color} size={20} />
           ),
-          tabBarBadge: 3,
+          headerShown: false,
         }}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            // Prevent default action
+            e.preventDefault();
+            // Reset the navigation state to ensure Home is the default screen
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: 'Lounge'}],
+              }),
+            );
+          },
+        })}
       />
       <Tab.Screen
         name="Post"
