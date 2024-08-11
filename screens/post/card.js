@@ -1,24 +1,32 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {colors} from '../../globalStyles';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import {BlogContext} from '../../context/blog';
 export default function Card({item}) {
   const navigation = useNavigation();
-  console.log(item.postImage, 'item');
+  const {likeBlog} = useContext(BlogContext);
   return (
     <View style={styles.card}>
-      <View style={styles.userProfile}>
-        <Image
-          source={item?.image}
-          style={styles.userImage}
-          loadingIndicatorSource={require('../../assets/users/image1.jpeg')} // Fallback image
-        />
-        <View style={styles.userInfo}>
-          <Text style={styles.userName}>{item?.username}</Text>
-          <Text style={styles.postTime}>{item?.date}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('userProfile', {
+            user: item,
+          })
+        }>
+        <View style={styles.userProfile}>
+          <Image
+            source={item?.image}
+            style={styles.userImage}
+            loadingIndicatorSource={require('../../assets/users/image1.jpeg')} // Fallback image
+          />
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>{item?.username}</Text>
+            <Text style={styles.postTime}>{item?.date}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
       <Text style={styles.title}>{item?.title}</Text>
       <View style={styles.postContainer}>
         <Image
@@ -32,7 +40,9 @@ export default function Card({item}) {
       </View>
 
       <View style={styles.actionButtons}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => likeBlog(item.id)}>
           {/* <Icons name="heart" size={20} color={colors.red} /> */}
           <Text>{item?.likecount}</Text>
           <Icons name="heart-o" size={20} color={colors.primary} />

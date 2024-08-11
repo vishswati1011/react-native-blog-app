@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {View} from 'react-native';
 import Card from './card';
-import {blogdata} from '../../utils/blog';
+import {BlogContext} from '../../context/blog';
 
 export default function Post() {
+  const {blogs} = useContext(BlogContext);
   const renderItem = ({item}) => <Card item={item} />;
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={blogdata}
+        data={blogs}
         renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
       />

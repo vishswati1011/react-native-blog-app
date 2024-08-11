@@ -1,33 +1,43 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 import {colors} from '../../globalStyles';
-import Icons from 'react-native-vector-icons/Feather';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {postdata} from '../../utils/postImages';
 import {Divider, NativeBaseProvider, Box, Flex} from 'native-base';
-export default function Profile({navigation}) {
+export default function Profile({route, navigation}) {
+  const {user} = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.user}>
         <Image
-          source={require('../../assets/users/image1.jpeg')}
+          source={user?.image}
           style={styles.userImage}
+          loadingIndicatorSource={require('../../assets/users/image1.jpeg')} // Fallback image
         />
         <View style={styles.userInfo}>
-          <Text style={styles.userText}>Oyin Dolapo</Text>
+          <Text style={styles.userText}>{user.username}</Text>
           <Text style={styles.userText}>Abeokuta, Ogun</Text>
         </View>
-        <Icons name="settings" size={20} style={styles.settingIcon} />
+        <Icons name="dots-vertical" size={20} style={styles.settingIcon} />
       </View>
-      <Text style={styles.decs}>
-        {' '}
-        I am a positive person, i love to traval and eat Always available for
-        chat, feel free to message me.
-      </Text>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('EditProfile')}
-        style={styles.editProfile}>
-        <Text style={styles.editText}>Edit Profile</Text>
-      </TouchableOpacity>
+      <View style={styles.follow}>
+        <Text style={styles.decs}>
+          I am a positive person, i love to traval and eat Always available for
+          chat, feel free to message me.
+        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('EditProfile')}
+          style={styles.editProfile}>
+          <Text style={styles.editText}>Follow</Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.divider}>
         <NativeBaseProvider>
@@ -60,6 +70,19 @@ export default function Profile({navigation}) {
             </Flex>
           </Box>
         </NativeBaseProvider>
+      </View>
+
+      <View style={styles.follower}>
+        <Text style={styles.postText}>Followers</Text>
+        <ScrollView horizontal={true} style={styles.followerContainer}>
+          {postdata.map((item, index) => (
+            <Image
+              source={item?.image}
+              style={styles.followerImage}
+              loadingIndicatorSource={require('../../assets/post/post1.png')} // Fallback image
+            />
+          ))}
+        </ScrollView>
       </View>
       <View style={styles.post}>
         <Text style={styles.postText}>Posts</Text>
@@ -105,16 +128,25 @@ const styles = StyleSheet.create({
   settingIcon: {
     marginLeft: 'auto',
   },
+  follow: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
   decs: {
-    marginVertical: 10,
+    width: 200,
     color: colors.black,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     padding: 10,
   },
   editProfile: {
     backgroundColor: colors.primary,
     padding: 10,
-    borderRadius: 5,
-    width: '95%',
+    borderRadius: 50,
+    // width: '95%',
     alignSelf: 'center',
     marginBottom: 10,
   },
@@ -136,6 +168,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  follower: {
+    display: 'flex',
+    padding: 10,
+  },
+  followerContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    overflowX: 'scroll',
+    gap: 10,
+    marginTop: 10,
+    flex: 1,
+    padding: 10,
+  },
+  followerImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    marginRight: 10,
+  },
   post: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -144,6 +195,7 @@ const styles = StyleSheet.create({
   postText: {
     fontSize: 16,
     color: colors.black,
+    fontWeight: 'bold',
   },
   postContainer: {
     display: 'flex',
