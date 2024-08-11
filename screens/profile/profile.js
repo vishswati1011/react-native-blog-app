@@ -66,6 +66,7 @@ export default function Profile({navigation}) {
         <View style={styles.postContainer}>
           {postdata.map((item, index) => (
             <Image
+              key={index}
               source={item?.image}
               style={styles.postImage}
               loadingIndicatorSource={require('../../assets/post/post1.png')} // Fallback image

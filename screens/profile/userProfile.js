@@ -77,6 +77,7 @@ export default function Profile({route, navigation}) {
         <ScrollView horizontal={true} style={styles.followerContainer}>
           {postdata.map((item, index) => (
             <Image
+              key={index}
               source={item?.image}
               style={styles.followerImage}
               loadingIndicatorSource={require('../../assets/post/post1.png')} // Fallback image
@@ -89,6 +90,7 @@ export default function Profile({route, navigation}) {
         <View style={styles.postContainer}>
           {postdata.map((item, index) => (
             <Image
+              key={index}
               source={item?.image}
               style={styles.postImage}
               loadingIndicatorSource={require('../../assets/post/post1.png')} // Fallback image
