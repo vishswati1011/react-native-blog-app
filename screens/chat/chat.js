@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   date: {
-    color: colors.grey,
+    color: colors.gray,
     fontSize: 12,
   },
   userContainer: {

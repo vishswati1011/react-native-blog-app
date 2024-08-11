@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 12,
-    color: colors.grey,
+    color: colors.gray,
     paddingLeft: 10,
   },
   loungeicon: {

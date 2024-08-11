@@ -18,7 +18,6 @@ export default function Comment({route}) {
     fetchUpdatedBlog();
   }, [blog, getBlogById]);
 
-  console.log('commentscreen', blog.comment.length, localBlog.comment.length);
   return (
     <View style={styles.container}>
       <Card item={localBlog} />

@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
   notificationTime: {
     fontSize: 14,
-    color: colors.grey,
+    color: colors.gray,
   },
   userImage: {
     width: 50,

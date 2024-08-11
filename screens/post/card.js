@@ -44,7 +44,7 @@ export default function Card({item}) {
           style={styles.button}
           onPress={() => likeBlog(item.id)}>
           {/* <Icons name="heart" size={20} color={colors.red} /> */}
-          <Text>{item?.likecount}</Text>
+          <Text style={styles.postTime}>{item?.likecount}</Text>
           <Icons name="heart-o" size={20} color={colors.primary} />
         </TouchableOpacity>
         <TouchableOpacity
@@ -54,7 +54,7 @@ export default function Card({item}) {
               blog: item,
             })
           }>
-          <Text>{item?.commentcount}</Text>
+          <Text style={styles.postTime}>{item?.commentcount}</Text>
           <Icons name="comment" size={20} color={colors.primary} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   postTime: {
-    color: colors.grey,
+    color: colors.gray,
   },
   postContainer: {
     width: '100%',

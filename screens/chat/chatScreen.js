@@ -56,6 +56,9 @@ const styles = StyleSheet.create({
   messagesContainer: {
     height: '100%',
     paddingBottom: 60,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   senderMsg: {
     backgroundColor: colors.primary,

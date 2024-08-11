@@ -13,11 +13,18 @@ import userProfile from '../screens/profile/userProfile';
 import Chat from '../screens/chat/chat';
 import ChatScreen from '../screens/chat/chatScreen';
 import AddComment from '../screens/post/newComment';
+import {colors} from '../globalStyles';
+
 const Stack = createNativeStackNavigator();
 
 const BackButton = ({navigation}) => (
   <TouchableOpacity onPress={() => navigation.goBack()}>
-    <MaterialIcons name="arrow-back-ios" size={24} style={{marginLeft: 10}} />
+    <MaterialIcons
+      name="arrow-back-ios"
+      size={24}
+      style={{marginLeft: 10}}
+      color={colors.black}
+    />
   </TouchableOpacity>
 );
 

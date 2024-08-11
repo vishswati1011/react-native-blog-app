@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {globalStyles} from '../../globalStyles';
 import {styles} from './authStyle';
 import PhoneInput from 'react-native-phone-number-input';
@@ -13,7 +13,6 @@ export default function Signup({navigation}) {
   const handleSubmit = () => {
     const checkValid = phoneInput.current?.isValidNumber(value);
     setValid(checkValid ? checkValid : false);
-    console.log(checkValid, 'checkValid');
     if (checkValid) {
       navigation.navigate('OtpScreen', {
         previousScreen: 'Signup',

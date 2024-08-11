@@ -17,7 +17,12 @@ const Tab = createBottomTabNavigator();
 
 const BackButton = ({navigation}) => (
   <TouchableOpacity onPress={() => navigation.goBack()}>
-    <MaterialIcons name="arrow-back-ios" size={20} marginLeft={20} />
+    <MaterialIcons
+      name="arrow-back-ios"
+      size={20}
+      marginLeft={20}
+      color={colors.black}
+    />
   </TouchableOpacity>
 );
 

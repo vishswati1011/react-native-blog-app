@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
   },
   settingIcon: {
     marginLeft: 'auto',
+    color: colors.gray,
   },
   decs: {
     marginVertical: 10,

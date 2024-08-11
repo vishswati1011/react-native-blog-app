@@ -12,8 +12,6 @@ import {BlogContext} from '../../context/blog';
 
 const AddComment = ({route}) => {
   const {blog} = route.params;
-  console.log("new com", blog.id);
-
   const [modalVisible, setModalVisible] = useState(false);
   const initialRef = useRef(null);
   const finalRef = useRef(null);
